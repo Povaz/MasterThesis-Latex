@@ -1,0 +1,538 @@
+% -------------------- RL ALGORITHMS ----------------%
+
+@book{rl:mdp,
+  title={Markov decision processes: discrete stochastic dynamic programming},
+  author={Puterman, Martin L},
+  year={2014},
+  publisher={John Wiley \& Sons}
+}
+
+@book{dynamicprogramming,
+  title={Dynamic Programming},
+  author={Bellman, Richard},
+  year={1957},
+  publisher={Princeton University Press}
+}
+@book{policyiteration,
+  title={Dynamic programming and Markov processes.},
+  author={Howard, Ronald A.},
+  year={1960},
+  publisher={John Wiley}
+}
+
+@article{valueiteration,
+     ISSN = {00251909, 15265501},
+     URL = {http://www.jstor.org/stable/2630487},
+     author = {Martin L. Puterman and Moon Chirl Shin},
+     journal = {Management Science},
+     number = {11},
+     pages = {1127--1137},
+     publisher = {INFORMS},
+     title = {Modified Policy Iteration Algorithms for Discounted Markov Decision Problems},
+     volume = {24},
+     year = {1978}
+}
+@article{temporaldifference,
+    author = {Sutton, Richard S.},
+    title = {Learning to Predict by the Methods of Temporal Differences},
+    year = {1988},
+    issue_date = {August 1988},
+    publisher = {Kluwer Academic Publishers},
+    address = {USA},
+    volume = {3},
+    number = {1},
+    issn = {0885-6125},
+    url = {https://doi.org/10.1023/A:1022633531479},
+    doi = {10.1023/A:1022633531479},
+    journal = {Mach. Learn.},
+    month = aug,
+    pages = {9–44},
+    numpages = {36},
+    keywords = {evaluation functions, connectionism, credit assignment, Incremental learning, prediction}
+}
+@article{qlearning,
+    author = {Watkins, Christopher},
+    year = {1989},
+    month = {01},
+    pages = {},
+    title = {Learning From Delayed Rewards}
+}
+@article{sarsa,
+    author = {Rummery, G. and Niranjan, Mahesan},
+    year = {1994},
+    month = {11},
+    pages = {},
+    title = {On-Line Q-Learning Using Connectionist Systems},
+    journal = {Technical Report CUED/F-INFENG/TR 166}
+}
+@phdthesis{sarsalambda,
+    title    = {Problem Solving with Reinforcement Learning.},
+    school   = {University of Cambridge},
+    author   = {Rummery, G. A.},
+    year     = {1995}
+}
+
+
+@article{policygradient,
+    author = {Sutton, Richard and Mcallester, David and Singh, Satinder and Mansour, Yishay},
+    year = {2000},
+    month = {02},
+    pages = {},
+    title = {Policy Gradient Methods for Reinforcement Learning with Function Approximation},
+    volume = {12},
+    journal = {Adv. Neural Inf. Process. Syst}
+}
+@article{REINFORCE,
+    author = {Williams, Ronald J.},
+    title = {Simple Statistical Gradient-Following Algorithms for Connectionist Reinforcement Learning},
+    year = {1992},
+    issue_date = {May 1992},
+    publisher = {Kluwer Academic Publishers},
+    address = {USA},
+    volume = {8},
+    number = {3–4},
+    issn = {0885-6125},
+    url = {https://doi.org/10.1007/BF00992696},
+    doi = {10.1007/BF00992696},
+    abstract = {This article presents a general class of associative reinforcement learning algorithms for connectionist networks containing stochastic units. These algorithms, called REINFORCE algorithms, are shown to make weight adjustments in a direction that lies along the gradient of expected reinforcement in both immediate-reinforcement tasks and certain limited forms of delayed-reinforcement tasks, and they do this without explicitly computing gradient estimates or even storing information from which such estimates could be computed. Specific examples of such algorithms are presented, some of which bear a close relationship to certain existing algorithms while others are novel but potentially interesting in their own right. Also given are results that show how such algorithms can be naturally integrated with backpropagation. We close with a brief discussion of a number of additional issues surrounding the use of such algorithms, including what is known about their limiting behaviors as well as further considerations that might be used to help develop similar but potentially more powerful reinforcement learning algorithms.},
+    journal = {Mach. Learn.},
+    month = may,
+    pages = {229–256},
+    numpages = {28},
+    keywords = {mathematical analysis, Reinforcement learning, connectionist networks, gradient descent}
+}
+@inproceedings{kakade2002,
+    author = {Kakade, Sham and Langford, John},
+    title = {Approximately Optimal Approximate Reinforcement Learning},
+    year = {2002},
+    isbn = {1558608737},
+    publisher = {Morgan Kaufmann Publishers Inc.},
+    address = {San Francisco, CA, USA},
+    booktitle = {Proceedings of the Nineteenth International Conference on Machine Learning},
+    pages = {267–274},
+    numpages = {8},
+    series = {ICML '02}
+}
+
+@article{dqn,
+author = {Mnih, Volodymyr and Kavukcuoglu, Koray and Silver, David and Rusu, Andrei and Veness, Joel and Bellemare, Marc and Graves, Alex and Riedmiller, Martin and Fidjeland, Andreas and Ostrovski, Georg and Petersen, Stig and Beattie, Charles and Sadik, Amir and Antonoglou, Ioannis and King, Helen and Kumaran, Dharshan and Wierstra, Daan and Legg, Shane and Hassabis, Demis},
+year = {2015},
+month = {02},
+pages = {529-33},
+title = {Human-level control through deep reinforcement learning},
+volume = {518},
+journal = {Nature},
+doi = {10.1038/nature14236}
+}
+@misc{ddpg,
+      title={Continuous control with deep reinforcement learning}, 
+      author={Timothy P. Lillicrap and Jonathan J. Hunt and Alexander Pritzel and Nicolas Heess and Tom Erez and Yuval Tassa and David Silver and Daan Wierstra},
+      year={2016},
+      eprint={1509.02971},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG}
+}
+@article{trpo,
+  author    = {John Schulman and
+               Sergey Levine and
+               Philipp Moritz and
+               Michael I. Jordan and
+               Pieter Abbeel},
+  title     = {Trust Region Policy Optimization},
+  journal   = {CoRR},
+  volume    = {abs/1502.05477},
+  year      = {2015},
+  url       = {http://arxiv.org/abs/1502.05477},
+  archivePrefix = {arXiv},
+  eprint    = {1502.05477},
+  timestamp = {Mon, 13 Aug 2018 16:48:08 +0200},
+  biburl    = {https://dblp.org/rec/journals/corr/SchulmanLMJA15.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+@misc{trpogae,
+      title={High-Dimensional Continuous Control Using Generalized Advantage Estimation}, 
+      author={John Schulman and Philipp Moritz and Sergey Levine and Michael Jordan and Pieter Abbeel},
+      year={2018},
+      eprint={1506.02438},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG}
+}
+@article{ppo,
+  author    = {John Schulman and
+               Filip Wolski and
+               Prafulla Dhariwal and
+               Alec Radford and
+               Oleg Klimov},
+  title     = {Proximal Policy Optimization Algorithms},
+  journal   = {CoRR},
+  volume    = {abs/1707.06347},
+  year      = {2017},
+  url       = {http://arxiv.org/abs/1707.06347},
+  archivePrefix = {arXiv},
+  eprint    = {1707.06347},
+  timestamp = {Mon, 13 Aug 2018 16:47:34 +0200},
+  biburl    = {https://dblp.org/rec/journals/corr/SchulmanWDRK17.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+
+% ------------------ RL DELAY ------------------%
+
+@inproceedings{delay:obsaugment,
+author = {Altman, Eitan and Nain, Philippe},
+year = {1992},
+month = {06},
+pages = {193-204},
+title = {Closed-Loop Control with Delayed Information.},
+volume = {20},
+journal = {ACM SIGMETRICS Performance Evaluation Review},
+doi = {10.1145/133057.133106}
+}
+@book{delay:execaugment,
+author = {Bertsekas, Dimitri P.},
+title = {Dynamic Programming: Deterministic and Stochastic Models},
+year = {1987},
+isbn = {0132215810},
+publisher = {Prentice-Hall, Inc.},
+address = {USA}
+}
+@article{delay:dmdp,
+  author={K. V. {Katsikopoulos} and S. E. {Engelbrecht}},
+  journal={IEEE Transactions on Automatic Control}, 
+  title={Markov decision processes with delays and asynchronous cost collection}, 
+  year={2003},
+  volume={48},
+  number={4},
+  pages={568-574},
+  doi={10.1109/TAC.2003.809799}
+}
+
+
+@book{delay:augment,
+  title={Dynamic Programming and Optimal Control},
+  volume={1/2},
+  author={Bertsekas, D.P.},
+  year={2001},
+  publisher={Athena Scientific}
+}
+
+
+
+@article{delay:mbs,
+    author = {Walsh, Thomas and Nouri, Ali and Li, Lihong and Littman, Michael},
+    year = {2008},
+    month = {02},
+    pages = {83-105},
+    title = {Learning and planning in environments with delayed feedback},
+    volume = {18},
+    journal = {Autonomous Agents and Multi-Agent Systems},
+    doi = {10.1007/s10458-008-9056-7}
+}
+
+
+@article{delay:survey,
+    author = {D. J. White},
+    title = {A Survey of Applications of Markov Decision Processes},
+    journal = {Journal of the Operational Research Society},
+    volume = {44},
+    number = {11},
+    pages = {1073-1096},
+    year  = {1993},
+    publisher = {Taylor & Francis},
+    doi = {10.1057/jors.1993.181},
+    URL = { 
+        https://doi.org/10.1057/jors.1993.181
+    },
+    eprint = { 
+        https://doi.org/10.1057/jors.1993.181
+    }
+}
+
+@inproceedings{delay:memoryless,
+    author = {Schuitema, E. and Busoniu, Lucian and Babuska, Robert and Jonker, Pieter},
+    year = {2010},
+    month = {11},
+    pages = {3226 - 3231},
+    title = {Control delay in Reinforcement Learning for real-time dynamic systems: A memoryless approach},
+    doi = {10.1109/IROS.2010.5650345}
+}
+
+@inproceedings{delay:mmqm,
+    author = {Campbell, Jeffrey and Givigi, Sidney and Schwartz, Howard},
+    year = {2014},
+    month = {10},
+    pages = {1611-1617},
+    title = {Multiple-model Q-learning for stochastic reinforcement delays},
+    volume = {2014},
+    journal = {Conference Proceedings - IEEE International Conference on Systems, Man and Cybernetics},
+    doi = {10.1109/SMC.2014.6974146}
+}
+
+@article{delayperf:robot,
+    author = {Mahmood, A. and Korenkevych, Dmytro and Komer, Brent and Bergstra, James},
+    year = {2018},
+    month = {03},
+    pages = {},
+    title = {Setting up a Reinforcement Learning Task with a Real-World Robot}
+}
+
+@misc{openaigym,
+    title={OpenAI Gym}, 
+    author={Greg Brockman and Vicki Cheung and Ludwig Pettersson and Jonas Schneider and John Schulman and Jie Tang and Wojciech Zaremba},
+    year={2016},
+    eprint={1606.01540},
+    archivePrefix={arXiv},
+    primaryClass={cs.LG}
+}
+
+@article{delay:ssbm,
+  author    = {Vlad Firoiu and
+               Tina Ju and
+               Josh Tenenbaum},
+  title     = {At Human Speed: Deep Reinforcement Learning with Action Delay},
+  journal   = {CoRR},
+  volume    = {abs/1810.07286},
+  year      = {2018},
+  url       = {http://arxiv.org/abs/1810.07286},
+  archivePrefix = {arXiv},
+  eprint    = {1810.07286},
+  timestamp = {Wed, 19 Feb 2020 18:55:53 +0100},
+  biburl    = {https://dblp.org/rec/journals/corr/abs-1810-07286.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+
+% ------------------ DEEP LEARNING ------------------%
+
+@misc{an:transformer,
+      title={Attention Is All You Need}, 
+      author={Ashish Vaswani and Noam Shazeer and Niki Parmar and Jakob Uszkoreit and Llion Jones and Aidan N. Gomez and Lukasz Kaiser and Illia Polosukhin},
+      year={2017},
+      eprint={1706.03762},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL}
+}
+@article{an:rnn,
+  author    = {Ilya Sutskever and
+               Oriol Vinyals and
+               Quoc V. Le},
+  title     = {Sequence to Sequence Learning with Neural Networks},
+  journal   = {CoRR},
+  volume    = {abs/1409.3215},
+  year      = {2014},
+  url       = {http://arxiv.org/abs/1409.3215},
+  archivePrefix = {arXiv},
+  eprint    = {1409.3215},
+  timestamp = {Mon, 13 Aug 2018 16:48:06 +0200},
+  biburl    = {https://dblp.org/rec/journals/corr/SutskeverVL14.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+@misc{an:seq2seq,
+      title={Learning Phrase Representations using RNN Encoder-Decoder for Statistical Machine Translation}, 
+      author={Kyunghyun Cho and Bart van Merrienboer and Caglar Gulcehre and Dzmitry Bahdanau and Fethi Bougares and Holger Schwenk and Yoshua Bengio},
+      year={2014},
+      eprint={1406.1078},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL}
+}
+@misc{an:attention,
+      title={Neural Machine Translation by Jointly Learning to Align and Translate}, 
+      author={Dzmitry Bahdanau and Kyunghyun Cho and Yoshua Bengio},
+      year={2016},
+      eprint={1409.0473},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL}
+}
+
+
+@article{dl:gru,
+  author    = {Kyunghyun Cho and
+               Bart van Merrienboer and
+               {\c{C}}aglar G{\"{u}}l{\c{c}}ehre and
+               Fethi Bougares and
+               Holger Schwenk and
+               Yoshua Bengio},
+  title     = {Learning Phrase Representations using {RNN} Encoder-Decoder for Statistical
+               Machine Translation},
+  journal   = {CoRR},
+  volume    = {abs/1406.1078},
+  year      = {2014},
+  url       = {http://arxiv.org/abs/1406.1078},
+  archivePrefix = {arXiv},
+  eprint    = {1406.1078},
+  timestamp = {Mon, 13 Aug 2018 16:46:44 +0200},
+  biburl    = {https://dblp.org/rec/journals/corr/ChoMGBSB14.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{dl:lstm,
+author = {Hochreiter, Sepp and Schmidhuber, Jürgen},
+year = {1997},
+month = {12},
+pages = {1735-80},
+title = {Long Short-term Memory},
+volume = {9},
+journal = {Neural computation},
+doi = {10.1162/neco.1997.9.8.1735}
+}
+
+@misc{dl:layernorm,
+      title={Layer Normalization}, 
+      author={Jimmy Lei Ba and Jamie Ryan Kiros and Geoffrey E. Hinton},
+      year={2016},
+      eprint={1607.06450},
+      archivePrefix={arXiv},
+      primaryClass={stat.ML}
+}
+
+@article{dl:dropout,
+  author    = {Geoffrey E. Hinton and
+               Nitish Srivastava and
+               Alex Krizhevsky and
+               Ilya Sutskever and
+               Ruslan Salakhutdinov},
+  title     = {Improving neural networks by preventing co-adaptation of feature detectors},
+  journal   = {CoRR},
+  volume    = {abs/1207.0580},
+  year      = {2012},
+  url       = {http://arxiv.org/abs/1207.0580},
+  archivePrefix = {arXiv},
+  eprint    = {1207.0580},
+  timestamp = {Mon, 13 Aug 2018 16:46:10 +0200},
+  biburl    = {https://dblp.org/rec/journals/corr/abs-1207-0580.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{ml:mtl,
+author = {Caruana, Rich},
+year = {1997},
+month = {07},
+title = {Multitask Learning},
+doi = {https://doi.org/10.1023/A:1007379606734}
+}
+
+% ------------------ PARTIALLY OBSERVABLE MDP ------------------%
+
+
+@inproceedings{pomdp:eligibilitytraces,
+    author = {Loch, John and Singh, Satinder P.},
+    title = {Using Eligibility Traces to Find the Best Memoryless Policy in Partially Observable Markov Decision Processes},
+    year = {1998},
+    isbn = {1558605568},
+    publisher = {Morgan Kaufmann Publishers Inc.},
+    address = {San Francisco, CA, USA},
+    booktitle = {Proceedings of the Fifteenth International Conference on Machine Learning},
+    pages = {323–331},
+    numpages = {9},
+    series = {ICML '98}
+}
+
+@misc{pomdp:psd,
+    title={Predictive-State Decoders: Encoding the Future into Recurrent Networks}, 
+    author={Arun Venkatraman and Nicholas Rhinehart and Wen Sun and Lerrel Pinto and Martial Hebert and Byron Boots and Kris M. Kitani and J. Andrew Bagnell},
+    year={2017},
+    eprint={1709.08520},
+    archivePrefix={arXiv},
+    primaryClass={stat.ML}
+}
+
+@misc{pomdp:rpsp,
+      title={Recurrent Predictive State Policy Networks}, 
+      author={Ahmed Hefny and Zita Marinho and Wen Sun and Siddhartha Srinivasa and Geoffrey Gordon},
+      year={2018},
+      eprint={1803.01489},
+      archivePrefix={arXiv},
+      primaryClass={stat.ML}
+}
+
+% ------------------ DENSITY ESTIMATION ------------------%
+
+@misc{de:maf,
+      title={Masked Autoregressive Flow for Density Estimation}, 
+      author={George Papamakarios and Theo Pavlakou and Iain Murray},
+      year={2018},
+      eprint={1705.07057},
+      archivePrefix={arXiv},
+      primaryClass={stat.ML}
+}
+@article{de:nade,
+  author    = {Benigno Uria and
+               Marc{-}Alexandre C{\^{o}}t{\'{e}} and
+               Karol Gregor and
+               Iain Murray and
+               Hugo Larochelle},
+  title     = {Neural Autoregressive Distribution Estimation},
+  journal   = {CoRR},
+  volume    = {abs/1605.02226},
+  year      = {2016},
+  url       = {http://arxiv.org/abs/1605.02226},
+  archivePrefix = {arXiv},
+  eprint    = {1605.02226},
+  timestamp = {Mon, 13 Aug 2018 16:46:11 +0200},
+  biburl    = {https://dblp.org/rec/journals/corr/UriaCGML16.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+@article{de:made,
+  author    = {Mathieu Germain and
+               Karol Gregor and
+               Iain Murray and
+               Hugo Larochelle},
+  title     = {{MADE:} Masked Autoencoder for Distribution Estimation},
+  journal   = {CoRR},
+  volume    = {abs/1502.03509},
+  year      = {2015},
+  url       = {http://arxiv.org/abs/1502.03509},
+  archivePrefix = {arXiv},
+  eprint    = {1502.03509},
+  timestamp = {Mon, 13 Aug 2018 16:46:39 +0200},
+  biburl    = {https://dblp.org/rec/journals/corr/GermainGML15.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@misc{de:normflows,
+      title={Variational Inference with Normalizing Flows}, 
+      author={Danilo Jimenez Rezende and Shakir Mohamed},
+      year={2016},
+      eprint={1505.05770},
+      archivePrefix={arXiv},
+      primaryClass={stat.ML}
+}
+
+% ------------------ OPTIMIZATION ------------------%
+
+@misc{opt:adam,
+  title={Adam: A Method for Stochastic Optimization}, 
+  author={Diederik P. Kingma and Jimmy Ba},
+  year={2017},
+  eprint={1412.6980},
+  archivePrefix={arXiv},
+  primaryClass={cs.LG}
+}
+
+% ------------------ PYTHON AND LIBRARIES ------------------%
+
+@incollection{python:pytorch,
+    title = {PyTorch: An Imperative Style, High-Performance Deep Learning Library},
+    author = {Paszke, Adam and Gross, Sam and Massa, Francisco and Lerer, Adam and Bradbury, James and Chanan, Gregory and Killeen, Trevor and Lin, Zeming and Gimelshein, Natalia and Antiga, Luca and Desmaison, Alban and Kopf, Andreas and Yang, Edward and DeVito, Zachary and Raison, Martin and Tejani, Alykhan and Chilamkurthy, Sasank and Steiner, Benoit and Fang, Lu and Bai, Junjie and Chintala, Soumith},
+    booktitle = {Advances in Neural Information Processing Systems 32},
+    editor = {H. Wallach and H. Larochelle and A. Beygelzimer and F. d\textquotesingle Alch\'{e}-Buc and E. Fox and R. Garnett},
+    pages = {8024--8035},
+    year = {2019},
+    publisher = {Curran Associates, Inc.},
+    url = {http://papers.neurips.cc/paper/9015-pytorch-an-imperative-style-high-performance-deep-learning-library.pdf}
+}
+
+@misc{python:gym,
+      title={OpenAI Gym}, 
+      author={Greg Brockman and Vicki Cheung and Ludwig Pettersson and Jonas Schneider and John Schulman and Jie Tang and Wojciech Zaremba},
+      year={2016},
+      eprint={1606.01540},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG}
+}
+
+@article{python:spinningup,
+    author = {Achiam, Joshua},
+    title = {{Spinning Up in Deep Reinforcement Learning}},
+    year = {2018}
+}

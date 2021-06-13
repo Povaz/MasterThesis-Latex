@@ -1,0 +1,113 @@
+%------------------------- PACKAGES -------------------------%
+\documentclass[12pt,twoside, openright]{report}
+\usepackage[a4paper,width=150mm,top=25mm,bottom=25mm,bindingoffset=6mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,italian]{babel}
+\usepackage{emptypage}
+\usepackage{latexsym}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{bbm}
+\usepackage{calrsfs}
+\usepackage{wrapfig}
+\usepackage{booktabs}
+\usepackage[ruled,linesnumbered]{algorithm2e}
+\usepackage{subcaption}
+\usepackage{caption}
+\usepackage{xcolor}
+\usepackage{array}
+\usepackage{dsfont}
+\usepackage{enumitem}
+\usepackage[autostyle,english=british]{csquotes}
+\usepackage[backend=biber,bibstyle=authoryear,citestyle=authoryear,maxbibnames=9,maxcitenames=2]{biblatex}
+\usepackage{hyperref}
+\usepackage{soul}
+\usepackage{multirow}
+\usepackage{nomencl}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=darkgray,
+    urlcolor=black
+}
+
+%------------------- ADDITIONAL SETTINGS --------------------%
+
+\addbibresource{bibliography.bib}
+
+\makenomenclature
+
+\author{Erick Venneri}
+\title{Placeholder: Delays in Reinforcement Learning}
+\date{9 November 2020}
+
+\DeclareMathOperator*{\argmin}{argmin}
+\DeclareMathOperator*{\argmax}{argmax}
+
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+
+\newcommand{\pcite}[1]{\textbf{[\cite{#1}]}}
+
+\newtheorem{theorem}{Theorem}[section]
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+\newtheorem{property}{Property}[section]
+
+\numberwithin{equation}{chapter}
+
+\setlength\bibitemsep{1.5\itemsep}
+
+\makeatletter
+    \setlength\@fptop{0\p@}
+\makeatother
+
+%------------------------- DOCUMENT -------------------------%
+\begin{document}
+    \selectlanguage{english}
+    
+    %--------------------- FRONT MATTER ---------------------%    
+    
+    \include{chapters/titlepage}
+    \cleardoublepage
+    
+    \pagenumbering{Roman}
+    \thispagestyle{empty}
+    
+    \cleardoublepage
+    \tableofcontents
+	
+	\cleardoublepage
+	\listoffigures
+    
+    \cleardoublepage
+    \listoftables
+    
+    \cleardoublepage
+    \listofalgorithms
+    
+    \cleardoublepage
+    \input{nomenclature}
+    
+    \cleardoublepage
+    %------------------------ BODY -------------------------%   
+    \pagenumbering{arabic}
+    \input{chapters/chapter1_intro}
+    \input{chapters/chapter2_defproblem}
+    \input{chapters/chapter3_stateoftheart}
+    \input{chapters/chapter4_preliminaries}
+    \input{chapters/chapter5_originalwork}
+    \input{chapters/chapter6_results}
+    \input{chapters/chapter7_conclusions}
+    
+    %-------------------- BIBLIOGRAPHY ---------------------%
+    \printbibliography[heading=bibintoc]
+\end{document}
