@@ -37,9 +37,32 @@
                     \item If the jump is greater than zero, the Agent will receive a "negative" amount of observations, meaning that the Agent will not get new observations for a certain number of time-steps, thus enlarging the current extended state.
                     \item If the jump is less than zero, the Agent will receive a set of observations at once. The latest observation of the set will be used to build the next extended state, which dimension will be reduced. 
                 \end{itemize}
-                In order to control the behaviour of the stochastic delay process, we use $p$ as a parameter of the environment. The range of possible values for $p$ lies between 0.51 and 0.99. Infact, with $p \leq 0.50$, the process would not compute enough negative jumps on average leading it to converge to $d_{max}$; while with $p = 1.00$, the process would constantly compute negative jumps, converging to an undelayed process.
+                In order to control the behaviour of the stochastic delay process, we use $p$ as a parameter of the environment. The range of possible values for $p$ lies between 0.51 and 0.99. Infact, with $p \leq 0.50$, the process would not compute enough negative jumps on average leading it to converge to $d_{max}$; while with $p = 1.00$, the process would constantly compute negative jumps, converging to an undelayed process. 
+                
+                \begin{figure}[hbtp]
+                    \centering
+                    \includegraphics[width=11cm]{images/results/delayp07_sampledelay_1.png}
+                    \caption{An instance of the stochastic jump process that generates the amount of delay with $p = 0.7$. The average delay sampled is highlighted by the dashed line.}
+                    \label{fig:delayp07_sampledelay}
+                    
+                    \vspace{0.25cm}
+                    
+                    \centering 
+                    \includegraphics[width=11cm]{images/results/delayp06_sampledelay_1.png}
+                    \caption{An instance of the stochastic jump process that generates the amount of delay with $p = 0.6$. The average delay sampled is highlighted by the dashed line.}
+                    \label{fig:delayp06_sampledelay}
+                    
+                    \vspace{0.25cm}
+                    
+                    \centering
+                    \includegraphics[width=11cm]{images/results/delayp05_sampledelay_1.png}
+                    \caption{An instance of the stochastic jump process that generates the amount of delay with $p = 0.5$. The average delay sampled is highlighted by the dashed line.}
+                    \label{fig:delayp05_sampledelay}
+                    
+                \end{figure}
                 
         \subsection{Baselines}
+        \label{sub:baselines}
         % Dedicated to explain the baseline algorithms used through all tests
             In order to properly estimated the proposed algorithms' performances, we need to define baseline algorithms and evaluate their performance in the same context. However, given the presence of delays, standard state-of-the-art Reinforcement Learning algorithm cannot be directly deployed as baselines. They need to be adapted through one of the approaches dedicated to the DMDP framework, presented in Section \ref{sota:delay_approaches}. We decided to adapt TRPO algorithm to the augmented and memoryless approach to have a direct comparison with our model-based approach of L2-TRPO and D-TRPO. We also implemented SARSA and D-SARSA as additional memoryless approach baselines. \newline
             It is important to mention that none of these algorithms is able to cope with stochastic delays, due to the structure of the feedforward networks that implement Policy and Value functions, which are not able to handle variable-size inputs. For this reason, experiments involving stochastic delays are only concerned with L2-TRPO and D-TRPO performances.
@@ -66,7 +89,6 @@
     %   - Select only relevant plots for the comparison
         The first step in the process of evaluating the original implementation is assessing the modules' properties: which are the hyperparameters that affect performances and total number of parameters the most. The goal of this section is to understand which hyperparameters offer the best trade-off between performance gains and number of additional parameters in the module. Given the fact that the modules are involved in computing the state or belief representation at each time-step, optimizing the total number of parameters is a key factor in order not to slow down the training process to a point in which the modules' benefits are sinked by long training times. \newline
         The following tests are performed on the State-Prediction module, which is trained for 200 epochs, each composed by 100 trajectories of 250 steps, for a total of 5 million steps. Each module has been trained 3 times with 3 different seeds, the results are presented as averages between them. In order to concisely refer to each of the modules tested, we set up a bit of nomenclature: each module will be referred to as [$enc_{ff}$, $enc_{dim}$, $e$]. 
-        
         
         \subsection{Cross-Validation}
         % Describe the first test with all Encoders between [16, 16, 1] and [32, 32, 2]
@@ -99,7 +121,7 @@
                 \caption{MSE Loss Function $L_{pred}$ of the trained modules. The right-hand side number in the legend is the total number of parameter of each module.}
                 \label{fig:results_parametertuning_1}
                 
-                \vspace{1.0cm}
+                \vspace{1.5cm}
                 
                 \includegraphics[width=15cm, keepaspectratio]{images/results/module_parametertuning_2.png}
                 \caption{MSE Loss Function $L_{pred}$ of the trained modules between Epoch 160 and Epoch 200. The right-hand side number in the legend is the total number of parameter of each module.}
@@ -112,7 +134,7 @@
                 \caption{MSE Loss Function $L_{pred}$ of the trained modules. The right-hand side number in the legend is the total number of parameter of each module.}
                 \label{fig:results_scalability_1}
                 
-                \vspace{1.0cm}
+                \vspace{1.5cm}
                 
                 \includegraphics[width=15cm, keepaspectratio]{images/results/module_scalability_2.png}
                 \caption{MSE Loss Function $L_{pred}$ of the trained modules between Epoch 160 and Epoch 200 for a better illustration. The right-hand side number in the legend is the total number of parameter of each module.}
@@ -125,7 +147,7 @@
                 \caption{MSE Loss Function $L_{pred}$ of the trained modules. The right-hand side number in the legend is the ADAM Learning Rate used for training.}
                 \label{fig:results_lr_2}
                 
-                \vspace{1.0cm}
+                \vspace{1.5cm}
                 
                 \includegraphics[width=15cm, keepaspectratio]{images/results/module_lr_1.png}
                 \caption{MSE Loss Function $L_{pred}$ of the trained modules between Epoch 0 and Epoch 70 for a better illustration. The right-hand side number in the legend is the ADAM Learning Rate used for training.}
@@ -138,7 +160,7 @@
             \caption{MSE Loss Function $L_{pred}$ of the trained modules.}
             \label{fig:results_causal_1}
             
-            \vspace{1.0cm}
+            \vspace{1.5cm}
             
             \includegraphics[width=15cm, keepaspectratio]{images/results/module_causal_2.png}
             \caption{MSE Loss Function $L_{pred}$ of the trained modules between Epoch 0 and Epoch 60 for a better illustration.}
@@ -149,21 +171,81 @@
     \section{Deterministic Environment}
     \label{results:deterministic}
     % Inverted Pendulum Results
+        This Section is dedicated to results obtained in the deterministic environment Inverted Pendulum. It is divided in two sub-sections: Section \ref{sub:res_det_delays} is concerned with training results obtained by simulated different amount of deterministic and constant delay, while Section \ref{sub:res_stoch_delays} presents training results obtain by simulating the presence of stochastic delays by means of the stochastic process described in Section \ref{sub:simulated_delays}. At the end, the last Section \ref{sub:res_test_delays} discusses the capabilities of the original approach when tested on environments in which the amount of simulated delay is different w.r.t. the one they were trained with. 
         
         \subsection{Deterministic Delays Training Results}
+        \label{sub:res_det_delays}
             % SARSA, DSARSA, A-TRPO, M-TRPO, L2-TRPO and D-TRPO Comparison
+            All baselines described in Section \ref{sub:baselines}, L2-TRPO and D-TRPO have been trained in the Inverted Pendulum environment. In particular, A-TRPO, M-TRPO and D-TRPO are equipped with policy networks composed of 2 feedforward layers of 64 neurons each and with value function networks composed of 1 feedforward layer of 64 neurons. L2-TRPO has been trained with a policy network composed of 2 feedforward layer of 67 neurons each and with a value function network with 1 feedforward layer of 128 neurons. D-TRPO and L2-TRPO have been deployed respectively with a [8, 64, 1] and a [8, 68, 1] modules, according to the notation presented in Section \ref{results:module_tuning}. L2-TRPO parameters have been slightly enlarged so that the entire network has a similar total number of parameters to D-TRPO, which is also equipped with a MAF network. All algorithms have been trained for 2000 epochs, each composed of 5000 steps for a total of 10 millions steps. Each trajectory in the environment lasts for 250 steps. Each algorithm has been trained with different amounts of deterministic and costant simulated delay, specifically we chose to test 3, 5, 10 and 15 time-steps of delay. At last, TRPO has beed trained on the same context without delays as a reference for the best possible performance it is possible to obtain.
             
+            \subsubsection{Results Description}
+                We start discussing the results from the 3-steps delay and then increasing delay. As figure \ref{fig:results_delay3_1} shows, D-TRPO, L2-TRPO and M-TRPO are able to cope with 3 steps of delay without particular issues: while M-TRPO is slightly slower than the other two, they are able to reach undelayed TRPO's average reward, albeit slower. Instead, A-TRPO is already greatly affected by the state augmentation and it does not manage to converge towards the optimal behaviour. At the same time, both SARSA and D-SARSA converge to a slightly better performance than A-TRPO, while still being substantially affected by the delay.\newline
+                Training with 5 steps of delays shows similar results: as expected, each algorithm is affected by the larger delay with slower convergence and/or slower final average reward. The main observable difference is the loss of performances that M-TRPO shows, without being able to reach the same level of performances of undelayed TRPO.\newline
+                A delay of 10 time-step heavily affects even L2-TRPO and D-TRPO, which are still able to outperform the other algorithms, but they no longer match undelayed TRPO performances. At the end, 15 steps of delay proves to be too large for any algorithm to show a significant performance improvement, with M-TRPO reaching the best result overall.
+            
+            \subsubsection{Result Discussion}
+                This set of training procedures shows that the proposed approach is solid and able to produce promising results. Both D-TRPO and L2-TRPO are able to outperform almost any other baselines, regardless the amount of delay present, even matching undelayed TRPO performances for lower delays, effectivaly nullfying the presence of delays. However, it is also interesting to note that M-TRPO is also able to keep up throughout the tests and it proves to be more resilient that other algorithms to large delays, possibly suggesting that it could be the preferred method in some range of delays. 
+            
+            \begin{figure}[hbtp]
+                \centering
+                \includegraphics[width=15cm, keepaspectratio]{images/results/delay3_comparisons_1.png}
+                \caption{Training results obtained in a 3-steps delay and deterministic environment setting.}
+                \label{fig:results_delay3_1}
+                
+                \vspace{1.5cm}
+                
+                \includegraphics[width=15cm, keepaspectratio]{images/results/delay5_comparisons_1.png}
+                \caption{Training results obtained in a 5-steps delay and deterministic environment setting.}
+                \label{fig:results_delay5_1}
+            \end{figure}
+            
+            \begin{figure}[hbtp]
+                \centering
+                \includegraphics[width=15cm, keepaspectratio]{images/results/delay10_comparisons_1.png}
+                \caption{Training results obtained in a 10-steps delay and deterministic environment setting.}
+                \label{fig:results_delay10_1}
+                
+                \vspace{1.5cm}
+                
+                \includegraphics[width=15cm, keepaspectratio]{images/results/delay15_comparisons_1.png}
+                \caption{Training results obtained in a 15-steps delay and deterministic environment setting.}
+                \label{fig:results_delay15_1}
+            \end{figure}
+        
+        \newpage
         \subsection{Stochastic Delays Training Results}
+        \label{sub:res_stoch_delays}
             % Only D-TRPO and L2-TRPO can natively handle them (Attention Network)
             % D-TRPO Tests --> Bad Results, keep training on Deterministic
             % Compare the trained model on Stochastic Delays against the Min/Max Deterministic Delay
+            We decided to test D-TRPO in a stochastic delay context, deploying the same settings for the networks as in the previous test. We train D-TRPO for 500 epochs composed of 5000 steps each, while each trajectory in the environment lasts for 250 steps, and simulating three different stochastic delay processes respectively with $p=0.7$, $p=0.6$ and $p=0.55$.
+            \\\\
+            
+            \begin{figure}[!b]
+                \includegraphics[width=15cm, keepaspectratio]{images/results/delayp07_comparisons_1.png}
+                \caption{Training results obtained with a stochastic delay process $p=0.7$ and deterministic environment setting.}
+                \label{fig:results_delayp07_1}
+            \end{figure}
+            
+            \begin{figure}[hbtp]
+                \centering
+                \includegraphics[width=15cm, keepaspectratio]{images/results/delayp06_comparisons_1.png}
+                \caption{Training results obtained with a stochastic delay process $p=0.6$ and deterministic environment setting.}
+                \label{fig:results_delayp06_1}
+                
+                \vspace{1.5cm}
+                
+                \includegraphics[width=15cm, keepaspectratio]{images/results/delayp05_comparisons_1.png}
+                \caption{Training results obtained with a stochastic delay process $p=0.55$ and deterministic environment setting.}
+                \label{fig:results_delayp05_1}
+            \end{figure}
         
+        \newpage
         \subsection{Test Results}
+        \label{sub:res_test_delays}
             % Describe the behaviour of the trained models when tested on different delays w.r.t. the one they were trained with, both DTRPO and L2TRPO
             
-            % Please add the following required packages to your document preamble:
-            
-            \begin{table}[t]
+            \begin{table}[!b]
                 \makebox[\textwidth][c]{
                     \begin{tabular}{@{}ccccc@{}}
                     \toprule
@@ -178,7 +260,7 @@
                 \caption{DTRPO Trained on Deterministic Delays, denoted in the header column, and Tested on Deterministic Delays, denoted in the header row.}
             \end{table}
             
-            \begin{table}[t]
+            \begin{table}[!b]
                 \centering
                 \begin{tabular}{@{}cccc@{}}
                 \toprule
@@ -192,7 +274,7 @@
                 \caption{DTRPO Trained on Deterministic Delays, denoted in the header column, and Tested on Stochastic Delays, denoted in the header row.}
             \end{table}
             
-            \begin{table}[t]
+            \begin{table}[!b]
                 \makebox[\textwidth][c]{
                     \begin{tabular}{@{}ccccc@{}}
                     \toprule
@@ -207,7 +289,7 @@
                 \caption{L2TRPO Trained on Deterministic Delays, denoted in the header column, and Tested on Deterministic Delays, denoted in the header row.}
             \end{table}
             
-            \begin{table}[t]
+            \begin{table}[!b]
                 \centering
                 \begin{tabular}{@{}cccc@{}}
                 \toprule

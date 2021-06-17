@@ -532,22 +532,24 @@
     \section{Masked Autoregressive Flow}
         \label{prel:maf}
         % Introduction -> Why it's important & Autoregressive + Normalizing flows
-        This section is dedicated to the presentation of Masked Autoregressive Flow (MAF), a density estimation technique based on neural networks proposed by \pcite{de:maf}, which stems from the combination of Neural Autoregressive Density Estimation (NADE) and Normalizing Flows. Its purpose is the estimation of a joint density $p(\mathbf{x})$, where $\mathbf{x}$ is a set of variables, from a set of given samples $\{ \mathbf{x}_n \}$. \newline
+        This section is dedicated to the presentation of Masked Autoregressive Flow (MAF), a density estimation technique based on neural networks proposed by \pcite{de:maf}, which stems from the combination of Neural Autoregressive Density Estimation (NADE) and Normalizing Flows. Its purpose is the estimation of a joint density $p(\mathbf{x})$, where $\mathbf{x}$ is a set of variables, from a set of given samples $\{ \mathbf{x}_n \}$. At first, NADE and Normalizing Flows are presented in Section \ref{subs:nade} and Section \ref{subs:norm_flows} respectively, since they are instrumental for the presentation of MAF, which is discussed in Section \ref{sub:maf}. \newline
         MAF has been adopted as a density estimation technique for the proposed network, thanks to its flexibility and ability to also estimate densities conditioned upon another set of variables $\mathbf{y}$. Infact, MAF constitutes the network through which the original network Module is optimized to drive its internal state towards the representation of a belief distribution of the current, yet unobserved, state of the environment. The specific details of the implementation are presented in Section \ref{ow:beliefmodule}.
         
         % Neural Autoregressive Density Estimation
         \subsection{Neural Autoregressive Density Estimation}
+        \label{subs:nade}
             NADE is a density estimation technique presented by \pcite{de:nade}, which relies on the chain rule of probability in order to decompose a density $p(\mathbf{x})$ in the product of several mono-dimensional conditional densities as follows:
             
             \[ p(\mathbf{x}) = \prod_{i} p(x_i | \mathbf{x}_{-i} ) \]
             
-            where $x_i$ represents a single variable in $\mathbf{x}$ and $\mathbf{x}_{-i}$ represents the subset of dimesions  $(x_j)_{j\in[\![[1,\dots,i+1]\!]}$. As a consequence, NADE is sensible to the variable order chosen. In practice, each monodimensional density $p(x_i | \mathbf{x}_{-i} )$ is modeled as a parametric density, with its parameters function of an internal state $h_i$, which in turn can be updated throughout all $x_i$ by a Recurrent network such as Long-Short Term Memory.
+            where $x_i$ represents i-th dimension in $\mathbf{x}$ and $\mathbf{x}_{-i}$ represents the subset of dimensions  $(x_j)_{j\in[1,\dots,i+1]}$. As a consequence, NADE is sensible to the order of the dimensions. In practice, each monodimensional density $p(x_i | \mathbf{x}_{-i} )$ is modeled as a parametric density, whose parameters are function of an internal state $h_i$. Thus, Recurrent networks such as LSTM or GRU can be deployed to recursively update the internal state $h_i$ while taking as input each single dimensions of $\mathbf{x}$.
             
             \subsubsection{Masked Autoencoder for Distribution Estimation}
                 As it happens for Sequence-to-sequence models, relying on Recurrent mechanisms severely hinders parallel computation possibilities (see Section \ref{sota:selfan}). Infact, a Recurrent model for NADE would require to sequentially update its internal state a number of times equal to the number of variables contained in $\mathbf{x}$. In order to overcome this limitation, a fully-connected model can be exploited to receive all $x_i$ as input and producing the same amount of outputs at once, along with a mask that drop the connections of each variable $x_i$ with its "successors" in the variable order. The result of this approach is Masked Autoencoder for Distribution Estimation, presented by \pcite{de:made}, upon which MAF implementation is based.
                 
         % Normalizing Flows
         \subsection{Normalizing Flows}
+        \label{subs:norm_flows}
             Normalizing Flows is another kind of neural density estimator that relies on modeling density $p(\mathbf{x})$ as a base density $q(\mathbf{u})$ transformed through an invertible and differentiable function $f$:
             
             \begin{align}
@@ -596,7 +598,7 @@
             
             \subsubsection{Stacking Multiple Models}
                 The flow described so far between $\mathbf{x}$ and $\mathbf{u}$ represents a single layer in the entire MAF architecture. Infact, MAF is based on stacking up several flows, each of which models the output of the previous flow and handle out variables to be modeled by the next flow. The possibility of stacking different models on one another is a key aspect of MAF architecture, since it provides it with powerful and precise density estimations: \pcite{de:maf} shows that their model is able to learn multimodal conditionals, even if MAF is only using unimodal conditionals. \newline
-                In practice, each model $f = \{ f_{\mu_i}, f_{\alpha_i} \}$ is implemented by following the MADE structure: a fully connected model that accepts $I$ inputs in order to provide $I$ outputs, which is then masked by using a suitable binary matrix in order to zero out connections that would disrupt the autoregressive property. Specifically, the $i$-th input is only connected to previous ones. As previously explained, this particular technique allows for exploiting a more efficient parallel computation w.r.t. a recurrent implementation.
+                In practice, each function $f = \{ f_{\mu_i}, f_{\alpha_i} \}$ is has a MADE structure: a fully connected model that accepts $I$ inputs in order to provide $I$ outputs, which is then masked by using a suitable binary matrix in order to zero out connections that would disrupt the autoregressive property. Specifically, the $i$-th input is only connected to previous ones. As previously explained, this particular technique allows for exploiting a more efficient parallel computation w.r.t. a recurrent implementation.
                 
             \subsubsection{Conditional MAF}
                 The autoregressive property makes MAF easy to be extended to conditional density estimation, the task of estimating the density $p(\mathbf{x}\vert\mathbf{y})$ given a set of examples $\{ \mathbf{x}_n, \mathbf{y}_n\}$, with $\mathbf{x} = (x_1, x_2, ..., x_I)$ and $\mathbf{y} = (y_1, y_2, ..., y_J)$. In practice, the vector $\mathbf{y}$ is simply appended to the conditional variables in each of the unimodal densities that follows the chain rule of probability:
