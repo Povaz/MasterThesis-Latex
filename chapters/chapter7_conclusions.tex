@@ -1,6 +1,26 @@
 \chapter{Conclusions and Future Research Directions}
+    \section{Conclusions}
+    \label{conc:conc}
+        % What we did:
+        %   - A new heuristic approach to tackle delays in RL
+        %       - From Model-Based
+        %       - Using POMDP literature, in particular PSR paradigm
+        %       - Applying neural density estimation for the first time
+        % What we discovered:
+        %   - Which are the most important parameters for the new approach
+        %   - The approach is sound, Deterministic Delay in Deterministic Environment shows
+        %   - However we encountered two major problems:
+        %       - While L2-TRPO is able to perform well on stochastic delays, D-TRPO has structural problems
+        %       - Stochastic perturbations
+        
+        In this thesis, we designed and implemented a new structured modular network to be deployed along side existing Reinforcement Learning algorithm, without modifications, in order to make them able to cope with the presence of delays in the environment. We adopted the existing Model-Based approach from the DMDP literature so to correctly define the interaction between our module and the deployed RL algorithm. The structure of the module has been inspired by POMDP literature, applying the PSR paradigm directly in a RL context. However, in light of the recent arise of Attention networks, we decided to implement the Self-Attention mechanism contained in the Transformer architecture inside our module, as a more optimized and parallel-enabled variant of the standard Recurrent mechanisms. At last, a MAF network has been used to drive the the output of the model towards a finite representation of the belief distribution of the current state, thus implementing a heuristic approach to tackle the problem of delays. By deploying the module along side TRPO algorithm, we defined a new algorithm, D-TRPO. \newline
+        
+        
+    \section{Future Work}
+    \label{conc:future}
     %   - Implement a solution that updates both Policy and Belief Module at the same time
     %       such as PSD and RPSP do. 
     %   - Test of different environments type to show strengths/weaknesses of the approach
     %   - Using the entire Transformer other than only the Encoder
     %   - Anonymous Delays applications
+    %   - Repair the Belief representation distribution
