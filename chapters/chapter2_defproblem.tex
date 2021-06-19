@@ -19,7 +19,7 @@
             \\\\
             The interaction between the Agent and the Environment along the time-steps produces a trajectory: $s_0, a_0, r_1, s_1, a_1, r_2, s_2, ...$, which can be finite or infinite depending on the Time Horizon of the MDP.
             \\\\
-            The set of all states $\mathbf{S}$ is called State Space, the set of all actions $\mathbf{A}$ is called Action Space. States and actions can be either Discrete or Continuous depending on the Environment properties. At last, $\mathbf{R}$ is the Reward Function, which returns a reward for each triple $(s, a, s')$ and thus can be defined as: $\mathbf{R}: \mathbf{S} \times \mathbf{A} \times \mathbf{S} \rightarrow \mathds{R} $. For the sake of completeness, collected rewards can be either negative or positive real values and depending on the sign they can be referred as costs. If the reward signal is formulated as a sequence of negative real values, the Reward function can also be called Cost Function.
+            The set of all states $\mathbf{S}$ is called State Space, the set of all actions $\mathbf{A}$ is called Action Space. States and actions can be either Discrete or Continuous depending on the Environment properties. At last, $\mathbf{R}$ is the Reward Function, which returns a reward for each triple $(s, a, s')$ and thus can be defined as: $\mathbf{R}: \mathbf{S} \times \mathbf{A} \times \mathbf{S} \rightarrow \mathds{R}$.
             
         \subsection{Markov Property and State-Transition Probabilities}
             \label{subs:markov}
@@ -32,6 +32,7 @@
                 
                 where the stochastic process $S_t$ is the trajectory the Agent follows in the environment. Therefore the State $s$ constitute a sufficient statistic for the future sequence of states.
             \end{definition}
+            \noindent
             Intuitively, the Markov Property states that each state $s$ must include all necessary information and aspects of the interaction between the Agent and the Environment that occurred before the Agent reached the said state and previous history is not needed in order to plan future actions. \newline
             This property has fundamental consequences since it enables decision-making that relies only on the knowledge of the current state and reward and not on the full trajectory experienced by the Agent. Upon this property, the Dynamics of the MDP can be defined as: 
             
@@ -50,7 +51,7 @@
                 \[p : \mathbf{S} \times \mathbf{A} \times \mathbf{S} \rightarrow [0, 1] \]
                 \[ p(s' | s, a) \doteq \sum_{r\in \mathbf{R}} P(s', r | s, a) \]
             \end{definition}
-            
+            \noindent
             State transitions can be either Deterministic or Stochastic, depending on the values of the State-Transition Probability Function, and thus, ultimately, on the Dynamics of the system. Deterministic State-Transition Probability functions assigns to each triple $(s, a, s')$ either probability 0 or probability 1, denoting a rather simple Environment in which each action provides clear and repeatable results. Stochastic State-Transition Probability functions, instead, assigns continuous probability values to each triple $(s, a, s')$, denoting a more complex environment in which actions' consequences are variable in each state. \newline
             To shorten the notation, an Environment characterized by Deterministic State-Transition Probability function can be simply called Deterministic Environment and, analogously, Stochastic Environments can be defined. \newline
             Intuitively, learning in a Deterministic Environment is much simpler than in a Stochastic Environment, due to the fact that the decisions taken by the Agent will have fixed and repeatable consequences. In Stochastic Environment, instead, selecting the same action $a$ twice in the same state $s$ may lead to different next states $s'$ and, as a consequence, the Agent will need more experience in the Environment in order to correctly assess all possible outcomes.
@@ -93,7 +94,7 @@
                 \end{align*}
             \end{definition}
 
-            A Policy defines the behaviour of the Agent that follows it while interacting with the Environment. In figure \ref{fig:int_schema_def}, the interaction between the Agent and the Environment is updated, showing more precisely the role of the Policy function and the Dynamics of the System. Once the behaviour of the Agent has been defined through a Policy function, it is important to also be able to evaluate the goodness of the said behaviour. For this reason, it is important to define the following Discounted Return:
+            A Policy defines the behaviour that the Agent follows it while interacting with the Environment. In figure \ref{fig:int_schema_def}, the interaction between the Agent and the Environment is updated, showing more precisely the role of the Policy function and the Dynamics of the System. Once the behaviour of the Agent has been defined through a Policy function, a way to evaluate its goodness must be defined. For this reason, it is important to define the following Discounted Return:
             
             \begin{definition}[Discounted Return]
                 \label{def:return}
