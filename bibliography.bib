@@ -1,4 +1,4 @@
-% -------------------- RL ALGORITHMS ----------------%
+% -------------------- INTRODUCTION ----------------%
 @article{intro:autonomous_driving,
   author    = {Bangalore Ravi Kiran and
                Ibrahim Sobh and
@@ -48,7 +48,9 @@ doi = {10.1177/0278364913495721}
   volume={6},
   number={3},
   pages={4257-4264},
-  doi={10.1109/LRA.2021.3064284}}
+  doi={10.1109/LRA.2021.3064284}
+}
+  
 % -------------------- RL ALGORITHMS ----------------%
 
 @book{rl:mdp,
@@ -122,7 +124,15 @@ doi = {10.1177/0278364913495721}
     author   = {Rummery, G. A.},
     year     = {1995}
 }
-
+@inproceedings{eligibilityperf,
+author = {Grzes, Marek and Kudenko, Daniel},
+year = {2008},
+month = {09},
+pages = {144-156},
+title = {Robustness Analysis of SARSA(lambda): Different Models of Reward and Initialisation.},
+isbn = {978-3-540-85775-4},
+doi = {10.1007/978-3-540-85776-1_13}
+}
 
 @article{policygradient,
     author = {Sutton, Richard and Mcallester, David and Singh, Satinder and Mansour, Yishay},
@@ -163,6 +173,40 @@ doi = {10.1177/0278364913495721}
     pages = {267–274},
     numpages = {8},
     series = {ICML '02}
+}
+
+@inproceedings{naturalgradients,
+author = {Kakade, Sham},
+title = {A Natural Policy Gradient},
+year = {2001},
+publisher = {MIT Press},
+address = {Cambridge, MA, USA},
+abstract = {We provide a natural gradient method that represents the steepest descent direction based on the underlying structure of the parameter space. Although gradient methods cannot make large changes in the values of the parameters, we show that the natural gradient is moving toward choosing a greedy optimal action rather than just a better action. These greedy optimal actions are those that would be chosen under one improvement step of policy iteration with approximate, compatible value functions, as defined by Sutton et al. [9]. We then show drastic performance improvements in simple MDPs and in the more challenging MDP of Tetris.},
+booktitle = {Proceedings of the 14th International Conference on Neural Information Processing Systems: Natural and Synthetic},
+pages = {1531–1538},
+numpages = {8},
+location = {Vancouver, British Columbia, Canada},
+series = {NIPS'01}
+}
+
+@article{dql,
+  author    = {Volodymyr Mnih and
+               Koray Kavukcuoglu and
+               David Silver and
+               Alex Graves and
+               Ioannis Antonoglou and
+               Daan Wierstra and
+               Martin A. Riedmiller},
+  title     = {Playing Atari with Deep Reinforcement Learning},
+  journal   = {CoRR},
+  volume    = {abs/1312.5602},
+  year      = {2013},
+  url       = {http://arxiv.org/abs/1312.5602},
+  archivePrefix = {arXiv},
+  eprint    = {1312.5602},
+  timestamp = {Mon, 13 Aug 2018 16:47:42 +0200},
+  biburl    = {https://dblp.org/rec/journals/corr/MnihKSGAWR13.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
 }
 
 @article{dqn,
@@ -491,6 +535,16 @@ doi = {https://doi.org/10.1023/A:1007379606734}
     pages = {323–331},
     numpages = {9},
     series = {ICML '98}
+}
+
+@article{pomdp:psr,
+author = {Littman, Michael and Sutton, Richard and Singh, Satinder},
+year = {2002},
+month = {04},
+pages = {},
+title = {Predictive Representations of State},
+volume = {14},
+journal = {Proc. Adv. Neural Inf. Process. Syst.}
 }
 
 @misc{pomdp:psd,
